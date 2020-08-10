@@ -33,13 +33,10 @@ class AddZipcodeValidationPlugin
         }
 
         if (isset($billingConfiguration)) {
-            //Iterate over billing forms.
             foreach($billingConfiguration as $key => &$billingForm) {
-                //Exclude not billing forms
                 if (!strpos($key, '-form')) {
                     continue;
                 }
-
                 $billingForm['children']['form-fields']['children'] = $this->processAddress(
                     $billingForm['children']['form-fields']['children'],
                     $billingForm['dataScopePrefix'],
@@ -57,9 +54,9 @@ class AddZipcodeValidationPlugin
     }
 
     /**
-     * @param $addressFieldset - Address fieldset config.
-     * @param $dataScope - data scope
-     * @param $deps - list of dependencies
+     * @param $addressFieldset
+     * @param $dataScope
+     * @param $deps
      * @return array
      */
     private function processAddress($addressFieldset, $dataScope, $deps)
@@ -87,7 +84,6 @@ class AddZipcodeValidationPlugin
         if (isset($addressFieldset['street']['children'])) {
             foreach($addressFieldset['street']['children'] as $key => $street) {
                 $street['tracks']['label'] = true;
-                //Remove .additional class. Can be removed, but style fix provided instead.
                 $street['additionalClasses'] = '';
                 $addressFieldset['street']['children'][$key] = $street;
             }

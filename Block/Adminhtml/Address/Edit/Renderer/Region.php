@@ -25,12 +25,10 @@ class Region extends \Magento\Backend\Block\AbstractBlock implements
     }
 
     /**
-     * Output the region element and javasctipt that makes it dependent from country element
      *
      * @param \Magento\Framework\Data\Form\Element\AbstractElement $element
      * @return string
      *
-     * @SuppressWarnings(PHPMD.UnusedLocalVariable)
      */
     public function render(\Magento\Framework\Data\Form\Element\AbstractElement $element)
     {

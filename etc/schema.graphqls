@@ -1,0 +1,15 @@
+type Query {
+    checkzipcode(
+        zipcode: String @doc(description: "Customer Zipcode during Checkout")
+    ): Checkzipcode
+@resolver(class:"Majidian\\Zipcode\\Model\\Resolver\\CheckZipcode")
+@doc(description:
+    "The checkzipcode query returns checks if the zipcode exists in allowable zipcodes.")
+@cache(cacheable: false)
+}
+type Checkzipcode @doc(description: "Checkzipcode returns a boolean answer, along with the details.") {
+    zipcode: String
+    country_id: String
+    region_id: String
+    city: String
+}
